@@ -5,31 +5,18 @@ import SEOInput from './SEOInput';
 class SEORobotsFollow extends SEOInput {
     render() {
         return (
-          <div className="seo-input field radio">
-            <label>{this.props.label}</label>
-            <div className="radio-options">
-              <label>
-                <input
-                  type="radio"
-                  value="follow"
-                  name={this.props.name}
-                  onClick={this.props.onChange}
-                  checked={this.props.value === 'follow'}
-                />
-                        Follow
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="no-follow"
-                  name={this.props.name}
-                  onClick={this.props.onChange}
-                  checked={this.props.value === 'no-follow'}
-                />
-                        No Follow
-              </label>
+            <div className="seo-input field">
+                <label>{this.props.label}</label>
+                <select
+                    className="dropdown"
+                    name={this.props.name}
+                    onChange={this.props.onChange}
+                >
+                    <option value="" selected={this.props.value === ''}>none</option>
+                    <option value="follow" selected={this.props.value === 'follow'}>follow</option>
+                    <option value="no-follow" selected={this.props.value === 'no-follow'}>no-follow</option>
+                </select>
             </div>
-          </div>
         );
     }
 }
