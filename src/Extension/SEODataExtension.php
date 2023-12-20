@@ -168,11 +168,12 @@ class SEODataExtension extends DataExtension
 		];
 	}
 
-	public function MetaTagCollection($raw = false)
+	public function MetaTagCollection($raw = false, $skipOverride = false)
 	{
 		$tags = [];
         $siteConfig = SiteConfig::current_site_config();
-		$record = SEODataExtension::get_override() ? : $this->owner;
+        $override = SEODataExtension::get_override();
+		$record = (!$skipOverride && $override) ? $override : $this->owner;
         self::set_seo_record($record);
 
 		if($metaTitle = $record->ComputeMetaTitle()) {
