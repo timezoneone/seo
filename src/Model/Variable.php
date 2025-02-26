@@ -53,7 +53,9 @@ class Variable extends DataObject
         }
         $vars = array_merge($options, self::get_sort_variables());
         foreach ($vars as $name => $val) {
-            $text = str_replace('{' . $name . '}', $val, $text);
+            if (isset($val)) {
+                $text = str_replace('{' . $name . '}', $val, $text);
+            }
         }
         return $text;
     }
